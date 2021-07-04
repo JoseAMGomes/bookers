@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Register</h3>
+    <h3 class="center-align">Sign In</h3>
 
     <div class="row">
-        <form class="col s12 m6 offset-m3" method="POST" action="{{ url_for('register') }}">
+        <form class="col s12 m6 offset-m3" method="POST" action="{{ url_for('signin') }}">
             <div class="card-panel">
                 <!-- username -->
                 <div class="row">
 					<div class="input-field col s12">
-						<i class="fas fa-user-plus prefix brown-text text-darken-1"></i>
+						<i class="fas fa-user-cog prefix brown-text text-darken-1"></i>
 						<input id="username" name="username" type="text" minlength="5"
                         maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required >
 						<label for="username">Username</label>
@@ -24,31 +24,25 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <!-- email -->
-                <div class="row">
-					<div class="input-field col s12">
-						<i class="fas fa-envelope-square prefix brown-text text-darken-1"></i>
-						<input id="email" name="email" type="text" minlength="5" class="validate">
-						<label for="email">Email</label>
-					</div>
-                </div>
-                <!-- register -->
+            
+                <!-- Sign In -->
                 <div class="row">
                     <button type="submit" class="col s12 btn-large brown darken-1 text-shadow">
-                        Register <i class="fas fa-sign-in-alt"></i>
+                        Sign In <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
             </div>
-        </form>
-    </div>
 
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-               Already registered previously?
-                <a href="{{ url_for('signin') }}" class="amber accent-1">Sign In</a>
-            </p>
-        </div>
+            <div class="row">
+                <div class="col s12">
+                    <p class="center-align">
+                        You don't have an account?
+                        <a href="{{ url_for('register') }}" class="amber accent-1">Register Account</a>
+                    </p>
+                </div>
+            </div>
+        
+        </form>
     </div>
 
 {% endblock %}
