@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for book in books %}
+    <h2 class="center-align">Book Reviews</h2>
+    
+    <div class="col s12 m5 offset-m1">
+        
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://www.stylist.co.uk/images/app/uploads/2019/12/17162852/the-end-of-a-book-1268x845.jpeg?w=1200&h=1&fit=max&auto=format%2Ccompress">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Title : {{book.title}}</p><br>
+              <p>Author : {{book.author}}</p><br>
+              <p>Book Description : {{book.description}}</p><br>
+              <p>Category : {{book.categories}}</p><br>
+              <p>Rating : {{book.rating}}</p><br>
+
+            </div>
+            <div class="card-action">
+              <a href="{{book.link}}">{{book.title}} on Amazon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+{% endblock %}

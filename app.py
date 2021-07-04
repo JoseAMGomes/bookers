@@ -29,6 +29,16 @@ def book_reviews():
     return render_template("books.html", books=books)
 
 
+@app.route("/my_reviews")
+def my_reviews():
+    return render_template("my_reviews.html")    
+
+
+@app.route("/make_review")
+def make_review():
+    return render_template("make_reviews.html")  
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
