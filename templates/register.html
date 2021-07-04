@@ -10,7 +10,8 @@
                 <div class="row">
 					<div class="input-field col s12">
 						<i class="fas fa-user-plus prefix brown-text text-darken-1"></i>
-						<input id="username" name="username" type="text" class="validate">
+						<input id="username" name="username" type="text" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required >
 						<label for="username">Username</label>
 					</div>
                 </div>
@@ -18,9 +19,18 @@
                 <div class="row">
                     <div class="input-field col s12">
 						<i class="fas fa-user-lock prefix brown-text text-darken-1"></i>
-                        <input id="password" name="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="password">Password</label>
                     </div>
+                </div>
+                <!-- username -->
+                <div class="row">
+					<div class="input-field col s12">
+						<i class="fas fa-envelope-square prefix brown-text text-darken-1"></i>
+						<input id="email" name="email" type="text" minlength="5" class="validate">
+						<label for="email">Email</label>
+					</div>
                 </div>
                 <!-- register -->
                 <div class="row">
