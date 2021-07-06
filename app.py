@@ -34,8 +34,22 @@ def my_reviews():
     return render_template("my_reviews.html")    
 
 
-@app.route("/make_review")
+@app.route("/make_review", methods=["GET", "POST"])
 def make_review():
+    if request.method == "POST":
+        book = {
+            "title": request.form.get("title"),
+            "author": request.form.get("author"),
+            "description": request.form.get("description"),
+            "rating": request.form.get("rating"),
+            "categories": request.form.get("categories"),
+            "link": request.form.get("link"),
+            "created_by": session["user"]
+        }
+        mongo.db.books.insert_one(book)
+        flash("Book Review Successfully Added")
+        return redirect(url_for("book_reviews"))
+
     return render_template("make_review.html")  
 
 
