@@ -31,7 +31,8 @@ def book_reviews():
 
 @app.route("/my_reviews")
 def my_reviews():
-    return render_template("my_reviews.html")    
+    books = mongo.db.books.find()
+    return render_template("my_reviews.html", books=books)    
 
 
 @app.route("/make_review", methods=["GET", "POST"])
@@ -53,11 +54,22 @@ def make_review():
     return render_template("make_review.html")  
 
 
-@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
-def edit_review(books_id):
-    books = mongo.db.tasks.find_one({"_id": ObjectId(books_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_review.html", books=books)
+@app.route("/edit_review/<book_id>", methods=["GET", "POST"])
+def edit_review(book_id):
+    if request.method == "POST":
+        edited = {
+            "title": request.form.get("title"),
+            "author": request.form.get("author"),
+            "description": request.form.get("description"),
+            "rating": request.form.get("rating"),
+            "categories": request.form.get("categories"),
+            "link": request.form.get("link"),
+            "created_by": session["user"]
+        }
+        mongo.db.books.update({"_id": ObjectId(book_id)}, edited)
+        flash("Book Review Successfully Updated")
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("edit_review.html", book=book)
 
 
 
