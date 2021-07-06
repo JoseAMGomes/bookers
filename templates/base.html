@@ -37,7 +37,7 @@
         
         <li><a href="{{ url_for('book_reviews') }}">Book Reviews</a></li>
         {% if session.user %}
-        <li><a href="#">My Reviews</a></li>
+        <li><a href="{{ url_for('my_reviews') }}">My Reviews</a></li>
         <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
         {% else %}
         <li><a href="{{ url_for('signin') }}">Sign In</a></li>

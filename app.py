@@ -74,6 +74,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+        return redirect(url_for("book_reviews"))
     return render_template("register.html")
     
 
@@ -90,6 +91,8 @@ def signin():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("book_reviews"))
+                
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
