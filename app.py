@@ -91,7 +91,7 @@ def signin():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("book_reviews"))
+                    return redirect(url_for("book_reviews"))
                 
             else:
                 # invalid password match
