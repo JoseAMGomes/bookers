@@ -53,6 +53,14 @@ def make_review():
     return render_template("make_review.html")  
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(books_id):
+    books = mongo.db.tasks.find_one({"_id": ObjectId(books_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_review.html", books=books)
+
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
