@@ -36,7 +36,7 @@ def my_reviews():
 
 @app.route("/make_review")
 def make_review():
-    return render_template("make_reviews.html")  
+    return render_template("make_review.html")  
 
 
 @app.route("/register", methods=["GET", "POST"])
