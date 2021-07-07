@@ -72,6 +72,12 @@ def edit_review(book_id):
     return render_template("edit_review.html", book=book)
 
 
+@app.route("/delete_review/<book_id>")
+def delete_review(book_id):
+    mongo.db.books.remove({"_id": ObjectId(book_id)})
+    flash("Review Successfully Deleted")
+    return redirect(url_for("book_reviews"))
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
