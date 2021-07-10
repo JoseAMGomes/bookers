@@ -2,7 +2,8 @@
 
 .logo{
     font-family: tangerine, sans-serif;
-    font-size: 100px;
+    font-size: 60px;
+    margin-top: auto;
 }
 
 nav{
@@ -16,4 +17,13 @@ nav{
 
 h1{
     font-family: tangerine, sans-serif;
+}
+
+.spacing{
+    margin: 50px 10px;
+    
+}
+
+.card .card-img img{
+    border-radius: 50%;
 }
