@@ -24,6 +24,38 @@ h1{
     
 }
 
-.card .card-img img{
-    border-radius: 50%;
+
+
+
+
+
+/*--------------------------------------------footer*/
+
+
+#FooterHeading {
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-size: 25px;
+
+}
+
+footer p {
+    font-family: tangerine, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+}
+
+footer {
+    text-align: center;
+    background-image: url(../img/bgimg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    margin-top: 70px;
+
 }
