@@ -30,16 +30,14 @@ def book_reviews():
     return render_template("books.html", books=books)
 
 
-@app.route("/my_reviews")
+@app.route("/reviews")
 def my_reviews():
     books = mongo.db.books.find()
     return render_template("my_reviews.html", books=books)    
 
 
-@app.route("/make_review", methods=["GET", "POST"])
-def make_review():
-    if request.method == "POST":
-        book = {
+def _extract_books(request):
+    return {
             "title": request.form.get("title"),
             "author": request.form.get("author"),
             "description": request.form.get("description"),
@@ -47,7 +45,13 @@ def make_review():
             "categories": request.form.get("categories"),
             "link": request.form.get("link"),
             "created_by": session["user"]
-        }
+        }   
+
+
+@app.route("/review/add", methods=["GET", "POST"])
+def make_review():
+    if request.method == "POST":
+        book = _extract_books(request)
         mongo.db.books.insert_one(book)
         flash("Book Review Successfully Added")
         return redirect(url_for("book_reviews"))
@@ -55,25 +59,17 @@ def make_review():
     return render_template("make_review.html")  
 
 
-@app.route("/edit_review/<book_id>", methods=["GET", "POST"])
+@app.route("/review/edit/<book_id>", methods=["GET", "POST"])
 def edit_review(book_id):
     if request.method == "POST":
-        edited = {
-            "title": request.form.get("title"),
-            "author": request.form.get("author"),
-            "description": request.form.get("description"),
-            "rating": request.form.get("rating"),
-            "categories": request.form.get("categories"),
-            "link": request.form.get("link"),
-            "created_by": session["user"]
-        }
+        edited = _extract_books(request)
         mongo.db.books.update({"_id": ObjectId(book_id)}, edited)
         flash("Book Review Successfully Updated")
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("edit_review.html", book=book)
 
 
-@app.route("/delete_review/<book_id>")
+@app.route("/review/delete/<book_id>")
 def delete_review(book_id):
     mongo.db.books.remove({"_id": ObjectId(book_id)})
     flash("Review Successfully Deleted")
@@ -86,9 +82,13 @@ def register():
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
+        existing_email = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
         if existing_user:
             flash("Username already exists")
+            return redirect(url_for("register"))
+        if existing_email:
+            flash("Email already has an account")
             return redirect(url_for("register"))
 
         register = {
@@ -111,7 +111,7 @@ def signin():
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
+    
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
