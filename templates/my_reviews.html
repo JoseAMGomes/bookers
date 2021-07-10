@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-action">
-              <a href="{{book.link}}">{{book.title}} on Amazon</a>
+              <a href="{{book.link}}" target="_blank">{{book.title}} on Amazon</a>
             </div>
           </div>
           <a href="{{ url_for( 'edit_review' , book_id = book._id) }}" class="btn amber accent-1 brown-text waves-effect waves-light btn">
@@ -40,5 +40,5 @@
     {% endfor %}
    
     
-    <a href="{{ url_for('make_review') }}" class="amber accent-1">New Review</a>
+    <a href="{{ url_for('make_review') }}" class="amber accent-1 brown-text waves-effect waves-light center-align btn">New Review</a>
 {% endblock %}
