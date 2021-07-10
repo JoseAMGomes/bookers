@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 def home():
     books = mongo.db.books.find()
-    return render_template("books.html", books=books)
+    return render_template("home.html", books=books)
 
 
 @app.route("/book_reviews")

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 class="center-align">Book Reviews</h2>
+
     {% for book in books %}
     
     
@@ -12,7 +13,7 @@
           </div>
           <div class="card-stacked">
             <div class="card-content">
-              <p>Title : {{book.title}}</p><br>
+              <p>Title: {{book.title}}</p><br>
               <p>Author : {{book.author}}</p><br>
               <p>Book Description : {{book.description}}</p><br>
               <p>Category : {{book.categories}}</p><br>

@@ -1,5 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+
 body{
     background-image: url(../img/homebg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.homepage-text{
+    position:absolute;
+    text-align: center;
+    width: 600px;
+    height:300px;
+    margin: 5% 60%;
+    line-height: 30px;
+    color:bisque;
+}
+
+.title{
+    font-family: tangerine, sans-serif;
+    font-size: 300px;
+}
+h2{
+    font-family: tangerine, sans-serif;
+}
+.btn{
+    margin: 20px 20px;
+    background-color: bisque;
+    
+}
+   
 }
