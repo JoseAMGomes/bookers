@@ -69,6 +69,7 @@ def edit_review(book_id):
         edited = _extract_books(request)
         mongo.db.books.update({"_id": ObjectId(book_id)}, edited)
         flash("Book Review Successfully Updated")
+        return redirect(url_for("my_reviews"))
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("edit_review.html", book=book)
 
