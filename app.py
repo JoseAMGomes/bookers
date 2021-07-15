@@ -20,14 +20,18 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    books = mongo.db.books.find()
-    return render_template("home.html", books=books)
+    return render_template("home.html")
 
 
-@app.route("/book_reviews")
+@app.route("/book_reviews", methods=["GET", "POST"])
 def book_reviews():
+    if request.method == "POST":
+        query = request.form.get("search")
+        books = list(mongo.db.books.find({"$text": {"$search": query}}))
+        return render_template("books.html", books=books)
     books = mongo.db.books.find()
     return render_template("books.html", books=books)
+
 
 
 @app.route("/reviews")
