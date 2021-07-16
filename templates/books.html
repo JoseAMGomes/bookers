@@ -1,42 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 class="center-align">Book Reviews</h2>
-  <div class="row">
-    <form class="col s12" method="POST" action="{{url_for('book_reviews')}}">
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Search" id="search" name="search" type="search" class="validate">
-            <label for="search">Search for book reviews!</label>
-        </div>
+<div class="row">
+  <form class="col s12" method="POST" action="{{url_for('book_reviews')}}">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Search" id="search" name="search" type="search" class="validate">
+          <label for="search">Search for book reviews!</label>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
   
-  {% for book in books %}
-
-  <div class="row">
+<div class="row">
+  
+    {% for book in books %}
     <div class="col s12 m6">
-      <div class="card spacing">
-        <div class="card-image">
-          <img src="https://www.stylist.co.uk/images/app/uploads/2019/12/17162852/the-end-of-a-book-1268x845.jpeg?w=1200&h=1&fit=max&auto=format%2Ccompress">
+      <div class="card card-size spacing">
+        <div class="row">
+          <div class="col s12">
+            <div class="card-image">
+              <img src="https://www.stylist.co.uk/images/app/uploads/2019/12/17162852/the-end-of-a-book-1268x845.jpeg?w=1200&h=1&fit=max&auto=format%2Ccompress">
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <p>Title: {{book.title}}</p><br>
-          <p>Author : {{book.author}}</p><br>
-          <p>Book Description : {{book.description}}</p><br>
-          <p>Category : {{book.categories}}</p><br>
-          <p>Rating : {{book.rating}}</p><br>
-          <p><em>by: {{ book.created_by }}</em></p><br>
-
+        <div class="row">
+          <div class="col s12">
+            <div class="card-content">
+              <p>Title: {{book.title}}</p><br>
+              <p>Author : {{book.author}}</p><br>
+              <p>Book Description : {{book.description}}</p><br>
+              <p>Category : {{book.categories}}</p><br>
+              <p>Rating : {{book.rating}}</p><br>
+              <p><em>by: {{ book.created_by }}</em></p><br>
+            </div>
+          </div>
         </div>
-        <div class="card-action">
-          <a href="{{book.link}}">{{book.title}} on Amazon</a>
+        <div class="row">
+          <div class="col s12">
+            <div class="card-action center">
+              <a href="{{book.link}}">{{book.title}} on Amazon</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    {% endfor %}
   
- 
-    
-{% endfor %}
+</div>
 {% endblock %}

@@ -3,22 +3,21 @@
 body{
     background-image: url(../img/homebg.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
+    background-color:rgba(0, 0, 0, 0.863)
 }
 
 .homepage-text{
     position:absolute;
     text-align: center;
-    width: 600px;
-    height:300px;
-    margin: 5% 60%;
-    line-height: 30px;
+    line-height: 50px;
     color:bisque;
+    margin-top: 50px;
 }
 
 .title{
     font-family: tangerine, sans-serif;
-    font-size: 300px;
+    font-size: 20vh;
 }
 h2{
     font-family: tangerine, sans-serif;
