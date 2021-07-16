@@ -23,6 +23,10 @@ h1{
     margin: 50px 0;
     
 }
+.spacing-two{
+    margin: 100px 0;
+    
+}
 
 .center{
     margin: auto;   
@@ -30,12 +34,16 @@ h1{
 .stick-bottom{
     position: absolute; 
     bottom: 0px;   
+    display: block;
 }
 
 .card-size{
     position: relative;
 }
 
+.btn-margins{
+    margin: 10px 10px;
+}
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     margin-right: 0px;
@@ -46,6 +54,10 @@ h1{
         min-height: 1300px;
     }
 
+    .spacing-two{
+        margin: 0px;
+        
+    }
 }
 
 
