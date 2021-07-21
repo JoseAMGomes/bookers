@@ -20,6 +20,10 @@ nav ul li a:hover {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
+.color_gold{
+    background-color: #ffd740;
+}
+
 h1{
     font-family: tangerine, sans-serif;
 }

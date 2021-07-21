@@ -17,12 +17,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# landing directory
 @app.route("/")
 def home():
     return render_template("home.html")
 
-
+# main content page for guests. book review listing
 @app.route("/book_reviews", methods=["GET", "POST"])
 def book_reviews():
     if request.method == "POST":
@@ -33,13 +33,13 @@ def book_reviews():
     return render_template("books.html", books=books)
 
 
-
+# main content for users. user reviews listing
 @app.route("/reviews")
 def my_reviews():
     books = mongo.db.books.find()
     return render_template("my_reviews.html", books=books)    
 
-
+# method for geting book info from database
 def _extract_books(request):
     return {
             "title": request.form.get("title"),
@@ -51,7 +51,7 @@ def _extract_books(request):
             "created_by": session["user"]
         }   
 
-
+# Add review directory
 @app.route("/review/add", methods=["GET", "POST"])
 def make_review():
     if request.method == "POST":
@@ -62,7 +62,7 @@ def make_review():
 
     return render_template("make_review.html")  
 
-
+# Edit review directory
 @app.route("/review/edit/<book_id>", methods=["GET", "POST"])
 def edit_review(book_id):
     if request.method == "POST":
@@ -73,20 +73,21 @@ def edit_review(book_id):
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("edit_review.html", book=book)
 
-
+# delete review funtionality
 @app.route("/review/delete/<book_id>")
 def delete_review(book_id):
     mongo.db.books.remove({"_id": ObjectId(book_id)})
     flash("Review Successfully Deleted")
     return redirect(url_for("book_reviews"))
 
-
+# register directory
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+        # check if email already exists
         existing_email = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
         if existing_user:
@@ -95,7 +96,7 @@ def register():
         if existing_email:
             flash("Email already has an account")
             return redirect(url_for("register"))
-
+        # gets info from form
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -109,7 +110,7 @@ def register():
         return redirect(url_for("book_reviews"))
     return render_template("register.html")
     
-
+# sign in directory
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
