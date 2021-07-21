@@ -20,14 +20,14 @@
         <a href="{{ url_for('home') }}" class="logo">Bookers</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{{ url_for('book_reviews') }}">Book Reviews</a></li>
+            <li><a href="{{ url_for('book_reviews') }}"><span id="nav_title" >Book Reviews</span></a></li>
             {% if session.user %}
-            <li><a href="{{ url_for('my_reviews') }}">My Reviews</a></li>
-            <li><a href="{{ url_for('make_review') }}">New Review</a></li>
-            <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
+            <li><a id="nav_title" href="{{ url_for('my_reviews') }}">My Reviews</a></li>
+            <li><a id="nav_title" href="{{ url_for('make_review') }}">New Review</a></li>
+            <li><a id="nav_title" href="{{ url_for('signout') }}">Sign Out</a></li>
             {% else %}
-            <li><a href="{{ url_for('signin') }}">Sign In</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a id="nav_title" href="{{ url_for('signin') }}">Sign In</a></li>
+            <li><a id="nav_title" href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
         </div>
@@ -35,7 +35,6 @@
 
     <ul class="sidenav" id="mobile-demo">
         <li><h4 class="center-align logo">Bookers</h4></li>
-        
         <li><a href="{{ url_for('book_reviews') }}">Book Reviews</a></li>
             {% if session.user %}
             <li><a href="{{ url_for('my_reviews') }}">My Reviews</a></li>

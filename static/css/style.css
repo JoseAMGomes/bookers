@@ -11,6 +11,10 @@ nav{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.color_gold{
+    color: goldenrod;
+}
 .text-shadow{
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
