@@ -11,9 +11,13 @@ nav{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+nav ul li:hover {
+   color: goldenrod;
+   text-decoration: underline;
+ }
 .color_gold{
     color: goldenrod;
+    text-decoration: underline;
 }
 .text-shadow{
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -55,7 +59,7 @@ h1{
 
 @media only screen and (min-width: 768px) {
     .card-size{
-        min-height: 1300px;
+        min-height: 1500px;
     }
 
     .spacing-two{

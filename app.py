@@ -45,7 +45,7 @@ def _extract_books(request):
             "title": request.form.get("title"),
             "author": request.form.get("author"),
             "description": request.form.get("description"),
-            "rating": request.form.get("rating"),
+            "review": request.form.get("review"),
             "categories": request.form.get("categories"),
             "link": request.form.get("link"),
             "created_by": session["user"]
