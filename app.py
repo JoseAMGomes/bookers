@@ -96,7 +96,7 @@ def register():
         if existing_email:
             flash("Email already has an account")
             return redirect(url_for("register"))
-        # gets info from form
+        # gets info from form user
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -104,7 +104,7 @@ def register():
         }
         mongo.db.users.insert_one(register)
 
-        # put the new user into 'session' cookie
+        # put the new user into 'session' cookie (taken from walkthrough project)
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("book_reviews"))
@@ -114,7 +114,7 @@ def register():
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
-        # check if username exists in db
+        # check username 
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
     
@@ -127,7 +127,7 @@ def signin():
                     return redirect(url_for("book_reviews"))
                 
             else:
-                # invalid password match
+                # invalid password 
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("signin"))
 
@@ -141,7 +141,7 @@ def signin():
 
 @app.route("/signout")
 def signout():
-    # remove user from session cookie
+    # remove user
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("book_reviews"))
@@ -150,4 +150,4 @@ def signout():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

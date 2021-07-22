@@ -337,4 +337,4 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 
 ## Acknoledgements
 
-My Mentor for guiding me and making sure I dont skip important steps. Special thanks to code institute online tutors that helped me make google maps API work and tried to help me integrate a different Hotel api(even if it did not work).
+My Mentor for guiding me and making sure I dont skip important steps. Special thanks to code institute online tutors that helped me.
